@@ -112,7 +112,7 @@ export default function Page() {
       </form>
 
       {completion ? (
-        <div className="p-6 mt-4 mb-4 text-lg rounded-lg text-violet-600 bg-rose-100">
+        <div className="p-6 mt-4 mb-6 text-lg rounded-lg text-violet-600 bg-rose-100 fade-in">
           {completion}
         </div>
       ) : null}
