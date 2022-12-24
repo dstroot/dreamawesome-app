@@ -31,7 +31,7 @@
     "components/NavLink.jsx",
     "components/Nav/menu.js",
     ".next/types/**/*.ts"
-, "pages/index.tsx.old"  ],
+, "pages/index.tsx.old", "pages/404.ts"  ],
   "exclude": [
     "node_modules"
   ]
