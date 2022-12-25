@@ -1,6 +1,7 @@
 "use client";
 
 import { SyntheticEvent, ChangeEvent, useState, useCallback } from "react";
+import { Testimonials } from "../components/Testimonials";
 
 export default function Page() {
   const [value, setValue] = useState("");
@@ -116,6 +117,8 @@ export default function Page() {
           {completion}
         </div>
       ) : null}
+
+      <Testimonials />
     </div>
   );
 }

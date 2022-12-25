@@ -22,20 +22,21 @@ const Testimonial: FC<Item> = ({ image, name, twitter, url, testimonial }) => {
           height={55}
         />
         <div className="ml-3 ">
-          <div className="font-semibold text-violet-800">{name}</div>
-          <div className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500">
-            <a
+          <div className="font-bold text-violet-700">{name}</div>
+          {/* <div className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500"> */}
+          <div className=" text-violet-500">
+            {/* <a
               href={url}
               target="_blank"
               rel="noreferrer"
               aria-label="twitter profile"
-            >
-              {twitter}
-            </a>
+            > */}
+            {twitter}
+            {/* </a> */}
           </div>
         </div>
       </div>
-      <div className="mt-6 text-sm leading-relaxed text-gray-700">
+      <div className="mt-6 text-sm leading-relaxed text-rose-900">
         {testimonial}
       </div>
     </div>

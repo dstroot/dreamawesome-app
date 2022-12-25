@@ -1,34 +1,34 @@
 export const list = [
   {
-    image: "/img/soren.webp",
-    name: "Søren Bramer Schmidt",
-    twitter: "@sorenbs",
-    url: "https://twitter.com/sorenbs",
+    image: "/img/image.jpg",
+    name: "Clarissa Barrera",
+    twitter: "@clarissabee",
+    url: "https://twitter.com/clarissabee",
     testimonial:
-      "Axiom is the modern serverless observability tool I always wanted. The strong focus on developer experience is a great match for how we do things at Prisma!",
+      "Dream analysis is a therapeutic technique that involves exploring the symbols and themes in a person's dreams in order to gain insight into their unconscious thoughts, feelings, and desires.",
   },
   {
-    image: "/img/ematthys.webp",
-    name: "Eric Matthys",
-    twitter: "@ematthys",
-    url: "https://twitter.com/ematthys",
+    image: "/img/image-1.jpg",
+    name: "Hanna Meadows",
+    twitter: "@themeadows",
+    url: "https://twitter.com/themeadows",
     testimonial:
-      "Monitoring our logs from our Next.js app deployed to Vercel was easy thanks to Axiom's Vercel integration and pre-built dashboard.",
+      "Dream analysis can be a powerful tool for self-discovery and personal development, helping a woman to better understand and navigate her own emotions and experiences.",
   },
   {
-    image: "/img/theo.webp",
-    name: "Theo - t3.gg",
-    twitter: "@t3dotgg",
-    url: "https://twitter.com/t3dotgg",
+    image: "/img/image-2.jpg",
+    name: "Silas Fuentes",
+    twitter: "@enfuegofuentes",
+    url: "https://twitter.com/enfuegofuentes",
     testimonial:
-      "Never underestimate the powers of good logs and observability. We solve issues way faster because of @AxiomFM. The quality of their search alone has measurably reduced my stress.",
+      "Whether he is facing challenges in his career, relationships, or personal development, unresolved issues or unconscious conflicts may be impacting your daily life.",
   },
   {
-    image: "/img/rauchg.webp",
-    name: "Guillermo Rauch",
-    twitter: "@rauchg",
-    url: "https://twitter.com/rauchg",
+    image: "/img/image-3.jpg",
+    name: "Jaylen Shah",
+    twitter: "@jaylenshah",
+    url: "https://twitter.com/jaylenshah",
     testimonial:
-      "Axiom is the most sophisticated and user friendly observability integration for Vercel.",
+      "Dream analysis may be particularly useful in helping to process any changes or challenges that may be occurring in her life, such as career transitions, family dynamics, or personal growth.",
   },
 ];
