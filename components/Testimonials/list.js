@@ -29,6 +29,6 @@ export const list = [
     twitter: "@jaylenshah",
     url: "https://twitter.com/jaylenshah",
     testimonial:
-      "Dream analysis may be particularly useful in helping to process any changes or challenges that may be occurring in her life, such as career transitions, family dynamics, or personal growth.",
+      "Dream analysis may be particularly useful in helping to process any changes or challenges that may be occurring in her life, such as family dynamics, or personal growth.",
   },
 ];
