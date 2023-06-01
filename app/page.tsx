@@ -2,11 +2,17 @@
 
 import { SyntheticEvent, ChangeEvent, useState, useCallback } from "react";
 import { Testimonials } from "../components/Testimonials";
+import {
+  createParser,
+  ParsedEvent,
+  ReconnectInterval,
+} from "eventsource-parser";
 
 export default function Page() {
   const [value, setValue] = useState("");
   const [waiting, setWaiting] = useState(false);
-  const [completion, setCompletion] = useState("");
+  const [completed, setCompleted] = useState(false);
+  const [sentences, setSentences] = useState("");
 
   const handleInput = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value);
@@ -18,33 +24,88 @@ export default function Page() {
     if (value !== "") {
       setWaiting(true);
 
-      const response = await fetch("/api/openai", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ text: value }),
-      });
+      // const response = await fetch("/api/openai", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ text: value }),
+      // });
 
-      const data = await response.json();
-      if (data.result !== "error") {
-        setCompletion(data.result?.choices[0]?.text);
+      // const data = await response.json();
+      // if (data.result !== "error") {
+      //   setCompletion(data.result?.choices[0]?.text);
+      //   setWaiting(false);
+      // } else {
+      //   setCompletion(data.message);
+      //   setWaiting(false);
+      // }
+
+      try {
+        const response = await fetch("/api/generate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ text: value }),
+        });
+
+        if (!response.ok) {
+          throw new Error(
+            `Request failed with status: ${response.status}. ${response.statusText}`
+          );
+        }
+
+        // NOTE: This data is a ReadableStream
+        const data = response.body;
+        if (!data) {
+          return;
+        }
+
+        const onParse = (event: ParsedEvent | ReconnectInterval) => {
+          if (event.type === "event") {
+            const data = event.data;
+            try {
+              const text = JSON.parse(data).text ?? "";
+              setSentences((prev) => prev + text);
+            } catch (e) {
+              console.error(e);
+            }
+          }
+        };
+
+        // https://web.dev/streams/#the-getreader-and-read-methods
+        const reader = data.getReader();
+        const decoder = new TextDecoder();
+        const parser = createParser(onParse);
+
+        let done = false;
+        while (!done) {
+          const { value, done: doneReading } = await reader.read();
+          done = doneReading;
+          const chunkValue = decoder.decode(value);
+          parser.feed(chunkValue);
+        }
+
+        setCompleted(true);
         setWaiting(false);
-      } else {
-        setCompletion(data.message);
-        setWaiting(false);
+      } catch (error) {
+        // Consider implementing your own error handling logic here
+        console.error(error);
       }
     }
   };
 
   return (
     <div className="container p-6 mx-auto">
-      <h1 className="pt-8 text-3xl font-bold sm:text-5xl md:pt-16 sm:pt-12 md:text-7xl text-violet-700">
-        DreamAweso&#8226;me
+      <h1 className="text-5xl font-bold tracking-tight sm:tracking-normal sm:text-5xl md:pt-16 sm:pt-12 md:text-7xl text-violet-700">
+        Dream<span className="block sm:inline">Aweso&#8226;me</span>
       </h1>
-      <h2 className="pt-6 pb-8 text-xl md:text-3xl text-violet-700">
-        Unlock the potential of your dreams! AI dream analysis helps you gain
-        insights and achieve personal growth.
+      <h2 className="pt-4 text-xl md:pt-8 sm:pt-6 md:text-3xl text-violet-700">
+        Unlock the potential of your dreams!{" "}
+        <span className="hidden sm:inline">
+          AI dream analysis helps you gain insights and achieve personal growth.
+        </span>
       </h2>
 
       <form
@@ -56,19 +117,20 @@ export default function Page() {
         <div className="mb-2 form-group">
           <label
             htmlFor="exampleInputEmail1"
-            className="inline-block mb-2 md:text-lg text-rose-50 form-label"
+            className="inline-block mt-4 mb-2 sm:mt-6 md:mt-8 md:text-lg text-rose-50 form-label"
           >
             Please describe your dream
             <span className="hidden md:inline"> (in detail)</span>:
           </label>
           <textarea
-            className="w-full p-6 text-lg transition ease-in-out rounded-lg appearance-none text-violet-600 form-control bg-rose-100 bg-clip-padding focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent"
+            className="w-full p-6 text-lg transition ease-in-out rounded-lg appearance-none text-violet-600 form-control bg-rose-50 bg-clip-padding focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent"
             aria-describedby="dreamhelp"
-            placeholder="I dreamt I was flying..."
+            placeholder="I dreamt I was ..."
             rows={5}
             value={value}
             onChange={handleInput}
             disabled={waiting}
+            autoFocus
           />
           <small
             id="dreamhelp"
@@ -107,14 +169,21 @@ export default function Page() {
               Analyzing dream...
             </>
           ) : (
-            "Analyze my Dream!"
+            <>{!completed ? "Analyze my dream!" : "Try another dream!"}</>
           )}
         </button>
       </form>
 
-      {completion ? (
-        <div className="p-6 mt-4 mb-6 text-lg rounded-lg text-violet-600 bg-rose-100 fade-in">
-          {completion}
+      {sentences !== "" ? (
+        <div className="p-6 mt-4 mb-4 text-lg rounded-lg text-violet-600 bg-rose-100 fade-in">
+          <div className="">
+            <span id="sentence" className="sentence">
+              {sentences}
+            </span>
+            {!completed ? (
+              <span className="inline-block w-[2px] h-4 ml-1 bg-violet-600 input-cursor" />
+            ) : null}
+          </div>
         </div>
       ) : null}
 
