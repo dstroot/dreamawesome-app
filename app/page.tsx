@@ -14,6 +14,12 @@ export default function Page() {
   const [completed, setCompleted] = useState(false);
   const [sentences, setSentences] = useState("");
 
+  function reset() {
+    setValue("");
+    setCompleted(false);
+    setSentences("");
+  }
+
   const handleInput = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value);
   }, []);
@@ -21,26 +27,27 @@ export default function Page() {
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
+    if (completed) {
+      reset();
+      return;
+    }
+
     if (value !== "") {
+      // set min length
+      if (value.length <= 15) {
+        setSentences("Try a longer dream!");
+        setCompleted(true);
+        return;
+      }
+
+      // stop people from trying to escape the prompt
+      if (value.toLowerCase().slice(0, 26) === "ignore previous directions") {
+        setSentences("Stop playing around!");
+        setCompleted(true);
+        return;
+      }
+
       setWaiting(true);
-
-      // const response = await fetch("/api/openai", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({ text: value }),
-      // });
-
-      // const data = await response.json();
-      // if (data.result !== "error") {
-      //   setCompletion(data.result?.choices[0]?.text);
-      //   setWaiting(false);
-      // } else {
-      //   setCompletion(data.message);
-      //   setWaiting(false);
-      // }
-
       try {
         const response = await fetch("/api/generate", {
           method: "POST",
@@ -90,7 +97,7 @@ export default function Page() {
         setCompleted(true);
         setWaiting(false);
       } catch (error) {
-        // Consider implementing your own error handling logic here
+        // TODO: error handling logic
         console.error(error);
       }
     }
@@ -129,7 +136,7 @@ export default function Page() {
             rows={5}
             value={value}
             onChange={handleInput}
-            disabled={waiting}
+            disabled={waiting || completed}
             autoFocus
           />
           <small
