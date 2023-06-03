@@ -37,7 +37,7 @@ export const config = {
   statusPage: process.env.STATUS_PAGE_ID ?? "",
 };
 
-// Our SEO data
+// Our basic SEO data
 export const meta: Meta = {
   URL: "https://www.dreamaweso.me",
   siteName: "DreamAwesome",
