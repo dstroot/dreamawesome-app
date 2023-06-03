@@ -27,5 +27,12 @@
     ".next/types/**/*.ts",
     "pages/404.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "baseUrl": ".",
+  "paths": {
+    "@/components/*": ["components/*"],
+    "@/lib/*": ["lib/*"],
+    "@/styles/*": ["styles/*"],
+    "@/data/*": ["data/*"]
+  }
 }

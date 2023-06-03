@@ -1,12 +1,15 @@
-// types
-import type { Metadata } from "next";
-
 // Styles
 import "../styles/globals.css";
 
-//Components
+// types
+import type { Metadata } from "next";
+
+// Components
 import { Footer } from "../components/Footer";
 import { Varela_Round } from "next/font/google";
+
+// Data
+import { meta } from "../data/constants";
 
 const varela = Varela_Round({
   weight: "400",
@@ -17,21 +20,21 @@ const varela = Varela_Round({
 export const metadata: Metadata = {
   // metadataBase is a convenience option to set a base URL prefix for metadata fields
   // that require a fully qualified URL. https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL(meta.URL),
   // https://nextjs.org/docs/app/api-reference/functions/generate-metadata#title
   title: {
-    default: "Acme",
-    template: "%s | Acme",
+    default: meta.siteName,
+    template: `%s | ${meta.siteName}`,
   },
-  description: "NextJS + TailwindCSS minimalist starter kit",
+  description: meta.description,
   // https://nextjs.org/docs/app/api-reference/functions/generate-metadata#basic-fields
   themeColor: "#fff",
   // https://nextjs.org/docs/app/api-reference/functions/generate-metadata#opengraph
   openGraph: {
-    title: "NextJS + TailwindCSS minimalist starter kit",
-    description: "The React Framework for the Web",
-    url: "https://nextjs.org",
-    siteName: "Next.js",
+    title: meta.title,
+    description: meta.description,
+    url: meta.URL,
+    siteName: meta.siteName,
     images: [
       {
         url: "https://nextjs.org/og.png",
@@ -39,8 +42,8 @@ export const metadata: Metadata = {
         height: 600,
       },
     ],
-    locale: "en-US",
-    type: "website",
+    locale: meta.og.locale,
+    type: meta.og.type,
   },
   robots: {
     index: true,

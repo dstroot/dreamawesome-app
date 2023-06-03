@@ -1,14 +1,7 @@
 import { OpenAIStream, OpenAIStreamPayload } from "../../../lib/OpenAIStream";
 import type { NextRequest } from "next/server";
 
-if (!process.env.OPENAI_API_KEY) {
-  throw new Error("Missing env var for OpenAI");
-}
-
-// https://vercel.com/blog/gpt-3-app-next-js-vercel-edge-functions#edge-functions-vs.-serverless-functions
 export const runtime = "edge";
-
-// const GET = async (req: NextRequest): Promise<Response> => {
 
 export async function POST(req: NextRequest): Promise<Response> {
   const { text } = (await req.json()) as {
