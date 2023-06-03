@@ -106,7 +106,7 @@ export default function Page() {
   return (
     <div className="container p-6 mx-auto">
       <h1 className="text-5xl font-bold tracking-tight sm:tracking-normal sm:text-5xl md:pt-16 sm:pt-12 md:text-7xl text-violet-700">
-        Dream<span className="block sm:inline">Aweso&#8226;me</span>
+        Dream<span className="block sm:inline">Aweso&#8228;me</span>
       </h1>
       <h2 className="pt-4 text-xl md:pt-8 sm:pt-6 md:text-3xl text-violet-700">
         Unlock the potential of your dreams!{" "}

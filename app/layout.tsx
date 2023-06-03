@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   description: meta.description,
   // https://nextjs.org/docs/app/api-reference/functions/generate-metadata#basic-fields
-  themeColor: "#fff",
+  themeColor: meta.themeColor,
   // https://nextjs.org/docs/app/api-reference/functions/generate-metadata#opengraph
   openGraph: {
     title: meta.title,
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     siteName: meta.siteName,
     images: [
       {
-        url: "https://nextjs.org/og.png",
-        width: 800,
-        height: 600,
+        url: meta.og.ogImage,
+        width: meta.og.width,
+        height: meta.og.height,
       },
     ],
     locale: meta.og.locale,

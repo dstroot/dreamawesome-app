@@ -1,3 +1,25 @@
+declare type Locale = string;
+
+interface Meta {
+  URL: string | URL;
+  siteName: string;
+  title?: string;
+  description?: string;
+  themeColor?: string;
+  backgroundColor?: string;
+  og: {
+    locale?: Locale;
+    type?: "website";
+    ogImage: string | URL;
+    width?: number;
+    height?: number;
+  };
+  twitter: {
+    card?: string;
+    site?: string;
+  };
+}
+
 // Ensure defaults for environment variables: create a config file in your
 // project where you export an object containing all configuration values.
 // There, you can set default values for variables coming from the environment.
@@ -6,7 +28,7 @@
 // a default value when dealing with `null` or `undefined`.
 
 if (!process.env.OPENAI_API_KEY) {
-  throw new Error("Missing env var for OpenAI");
+  throw new Error("Missing environment variables for OpenAI");
 }
 
 export const config = {
@@ -16,18 +38,20 @@ export const config = {
 };
 
 // Our SEO data
-export const meta = {
+export const meta: Meta = {
   URL: "https://www.dreamaweso.me",
   siteName: "DreamAwesome",
-  title: "Analyze your dreams using AI",
+  title: "Unlock the potential of your dreams using AI",
   description:
-    "DreamAwesome is where you can analyze your dreams to get insight into the their meaning and relevance for your future.",
+    "DreamAwesome helps you analyze your dreams to gain insight into the their meaning to achieve personal growth",
   themeColor: "#000000",
   backgroundColor: "#000000",
   og: {
     locale: "en-US",
     type: "website",
-    ogImage: "https://nextjs.org/og.png",
+    ogImage: "/ogimage.jpg",
+    width: 1200,
+    height: 630,
   },
   twitter: {
     card: "summary_large_image",
