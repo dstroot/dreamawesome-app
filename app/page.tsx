@@ -140,7 +140,7 @@ export default function Page() {
             rows={5}
             value={value}
             onChange={handleInput}
-            disabled={waiting}
+            disabled={waiting || completed}
             autoFocus
           />
           <small
