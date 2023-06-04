@@ -18,12 +18,12 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: "/",
     icons: [
       {
-        src: "icon3.png",
+        src: "maskable_icon_192.png",
         sizes: "192x192",
         type: "image/png",
       },
       {
-        src: "icon4.png",
+        src: "maskable_icon_512.png",
         sizes: "512x512",
         type: "image/png",
       },
