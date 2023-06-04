@@ -64,7 +64,7 @@ export default function RootLayout({
     <html lang="en-US">
       <head />
       <body
-        className={`${varela.variable} font-sans flex flex-col min-h-full antialiased bg-rose-200`}
+        className={`${varela.variable} font-sans antialiased flex flex-col min-h-full  bg-rose-200`}
       >
         {/* <Navbar /> */}
         <main className="flex-grow bg-cover bg-top bg-[url('../public/img/pexels-mo-eid-11592804.jpeg')]">
