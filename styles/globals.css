@@ -16,3 +16,17 @@
     }
   }
 }
+
+/* 
+https://www.joshwcomeau.com/css/custom-css-reset/ 
+The problem is that the vh unit doesn't work properly on mobile devices; 
+100vh will take up more than 100% of the screen real estate, because 
+mobile browsers do that thing where the browser UI comes and goes.
+*/
+@layer base {
+  html,
+  body,
+  #__next {
+    height: 100%;
+  }
+}
