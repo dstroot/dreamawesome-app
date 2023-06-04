@@ -44,8 +44,8 @@ export const meta: Meta = {
   title: "Unlock the potential of your dreams using AI",
   description:
     "DreamAwesome helps you analyze your dreams to gain insight into the their meaning to achieve personal growth",
-  themeColor: "#000000",
-  backgroundColor: "#000000",
+  themeColor: "##F5E1E6",
+  backgroundColor: "#F5E1E6",
   og: {
     locale: "en-US",
     type: "website",

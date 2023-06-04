@@ -12,7 +12,7 @@ type Item = {
 
 const Testimonial: FC<Item> = ({ image, name, twitter, url, testimonial }) => {
   return (
-    <div className="bg-rose-200 border border-[#ffffff22] rounded-lg shadow-lg p-6 min-w-[250px]">
+    <div className="bg-rose-100 border border-[#ffffff22] rounded-lg shadow-lg p-6 min-w-[250px]">
       <div className="flex items-center">
         <Image
           alt="avatar"
@@ -24,7 +24,7 @@ const Testimonial: FC<Item> = ({ image, name, twitter, url, testimonial }) => {
         <div className="ml-3 ">
           <div className="font-bold text-violet-700">{name}</div>
           {/* <div className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500"> */}
-          <div className=" text-violet-500">
+          <div className=" text-violet-600">
             {/* <a
               href={url}
               target="_blank"

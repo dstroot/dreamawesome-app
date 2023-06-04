@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="bg-rose-300">
+    <footer className="bg-rose-200">
       <div className="container p-6 mx-auto">
         <p className="text-sm text-rose-800">
           The interpretations and insights gained through dream analysis are

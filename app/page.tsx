@@ -152,7 +152,7 @@ export default function Page() {
         </div>
         <button
           type="submit"
-          className={`px-8 py-3 rounded-full bg-rose-600 hover:bg-rose-700 text-rose-50 ${
+          className={`px-8 py-3 rounded-full bg-rose-700 hover:bg-rose-800 text-rose-50 tracking-wide font-semibold ${
             waiting ? "opacity-50 cursor-not-allowed" : ""
           }`}
         >
