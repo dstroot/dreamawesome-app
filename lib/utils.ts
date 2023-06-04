@@ -10,8 +10,6 @@ export function getRandomInt({ min, max }: { min: number; max: number }) {
 
 /**
  * This function waits for a specified time and then resolves
- * @param ms
- * @returns
  */
 function waitForMs(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));

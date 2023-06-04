@@ -9,13 +9,14 @@ import {
 } from "eventsource-parser";
 
 export default function Page() {
-  const [value, setValue] = useState("");
-  const [waiting, setWaiting] = useState(false);
-  const [completed, setCompleted] = useState(false);
-  const [sentences, setSentences] = useState("");
+  const [value, setValue] = useState(""); // what the user types
+  const [waiting, setWaiting] = useState(false); // waiting for API
+  const [completed, setCompleted] = useState(false); // API response completed
+  const [sentences, setSentences] = useState(""); // API response data
 
   function reset() {
     setValue("");
+    setWaiting(false);
     setCompleted(false);
     setSentences("");
   }
@@ -33,7 +34,7 @@ export default function Page() {
     }
 
     if (value !== "") {
-      // set min length
+      // set min dream length
       if (value.length <= 15) {
         setSentences("Try a longer dream!");
         setCompleted(true);
@@ -76,6 +77,7 @@ export default function Page() {
               const text = JSON.parse(data).text ?? "";
               setSentences((prev) => prev + text);
             } catch (e) {
+              // TODO: error handling logic
               console.error(e);
             }
           }
@@ -86,6 +88,7 @@ export default function Page() {
         const decoder = new TextDecoder();
         const parser = createParser(onParse);
 
+        // Read the stream
         let done = false;
         while (!done) {
           const { value, done: doneReading } = await reader.read();
@@ -94,11 +97,12 @@ export default function Page() {
           parser.feed(chunkValue);
         }
 
+        // all done
         setCompleted(true);
         setWaiting(false);
-      } catch (error) {
+      } catch (e) {
         // TODO: error handling logic
-        console.error(error);
+        console.error(e);
       }
     }
   };
@@ -136,7 +140,7 @@ export default function Page() {
             rows={5}
             value={value}
             onChange={handleInput}
-            disabled={waiting || completed}
+            disabled={waiting}
             autoFocus
           />
           <small

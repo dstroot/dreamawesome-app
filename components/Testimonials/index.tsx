@@ -12,7 +12,7 @@ type Item = {
 
 const Testimonial: FC<Item> = ({ image, name, twitter, url, testimonial }) => {
   return (
-    <div className="bg-rose-200 border border-[#ffffff22] rounded-lg shadow-lg p-6 min-w-[300px] max-w-[300px]">
+    <div className="bg-rose-200 border border-[#ffffff22] rounded-lg shadow-lg p-6 min-w-[250px]">
       <div className="flex items-center">
         <Image
           alt="avatar"
@@ -45,7 +45,7 @@ const Testimonial: FC<Item> = ({ image, name, twitter, url, testimonial }) => {
 
 export const Testimonials = () => {
   return (
-    <div className="flex pb-4 mt-16 space-x-3 overflow-x-auto">
+    <div className="grid grid-cols-1 gap-4 mt-12 mb-12 sm:grid-cols-2 xl:grid-cols-4">
       {list.map((item: Item, index: number) => {
         return (
           <Testimonial
