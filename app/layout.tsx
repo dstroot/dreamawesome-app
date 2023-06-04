@@ -61,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html lang="en-US">
       <head />
       <body
         className={`${varela.variable} font-sans flex flex-col min-h-screen antialiased bg-rose-200`}
