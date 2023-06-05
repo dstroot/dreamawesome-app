@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { footerItems } from "../../data/constants";
+import { meta, footerItems } from "../../data/constants";
 
 export const Footer = () => {
   // get year for copyright
@@ -22,7 +22,7 @@ export const Footer = () => {
           mental health professional.
         </p>
         <div className="flex flex-row flex-wrap items-center justify-between mt-4 border-t border-rose-800">
-          <div>
+          <div className="mt-2">
             {footerItems.legal.map((item, index) => {
               return item.internal ? (
                 <Link key={`${index}`} href={item.path} className={gridLinks}>
@@ -35,8 +35,10 @@ export const Footer = () => {
               );
             })}
           </div>
-          <p className="mt-4 text-sm text-rose-800">
-            Copyright © {year} Axiom, Inc.
+          <p className="mt-2 text-sm text-rose-800">
+            <span className="hidden md:inline">Copyright </span>© {year}{" "}
+            {meta.siteName}
+            {"."}
             <span className="hidden md:inline"> All rights reserved.</span>
           </p>
         </div>

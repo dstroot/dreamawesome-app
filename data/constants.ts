@@ -1,4 +1,4 @@
-declare type Locale = string;
+type Locale = string;
 
 interface Meta {
   URL: string | URL;
@@ -34,7 +34,6 @@ if (!process.env.OPENAI_API_KEY) {
 export const config = {
   nodeEnv: process.env.NODE_ENV ?? "development",
   openAIKey: process.env.OPENAI_API_KEY ?? "",
-  statusPage: process.env.STATUS_PAGE_ID ?? "",
 };
 
 // Our basic SEO data
@@ -65,6 +64,5 @@ export const footerItems = {
   legal: [
     { path: "/privacy", name: "Privacy Policy", internal: true },
     { path: "/terms", name: "Terms of Service", internal: true },
-    { path: "/cookies", name: "Cookies", internal: true },
   ],
 };
