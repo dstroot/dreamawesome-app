@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { meta, menuItems, footerItems } from "../data/constants";
+import { meta, menuItems, footerItems } from "@/data/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   //   const res = await fetch('https://.../posts');

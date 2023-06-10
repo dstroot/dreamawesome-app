@@ -2,6 +2,7 @@ type Locale = string;
 
 interface Meta {
   URL: string | URL;
+  email: string;
   siteName: string;
   title?: string;
   description?: string;
@@ -39,6 +40,7 @@ export const config = {
 // Our basic SEO data
 export const meta: Meta = {
   URL: "https://www.dreamaweso.me",
+  email: "test@dreamaweso.me",
   siteName: "DreamAwesome",
   title: "Unlock the potential of your dreams using AI",
   description:

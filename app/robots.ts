@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { meta } from "../data/constants";
+import { meta } from "@/data/constants";
 
 // https://en.wikipedia.org/wiki/Robots.txt#Standard
 export default function robots(): MetadataRoute.Robots {

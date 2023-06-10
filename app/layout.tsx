@@ -1,15 +1,19 @@
 // Styles
-import "../styles/globals.css";
+import "@/styles/globals.css";
 
 // types
 import type { Metadata } from "next";
 
 // Components
-import { Footer } from "../components/Footer";
+import { Footer } from "@/components/Footer";
+import { GoogleTagMgr } from "@/components/GoogleTagMgr";
+
+// Libraries
 import { Varela_Round } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 // Data
-import { meta } from "../data/constants";
+import { meta } from "@/data/constants";
 
 const varela = Varela_Round({
   weight: "400",
@@ -69,6 +73,8 @@ export default function RootLayout({
         {/* <Navbar /> */}
         <main className="flex-grow">{children}</main>
         <Footer />
+        <GoogleTagMgr />
+        <Analytics />
       </body>
     </html>
   );

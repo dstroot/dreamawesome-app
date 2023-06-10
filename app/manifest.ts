@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 // Data
-import { meta } from "../data/constants";
+import { meta } from "@/data/constants";
 
 // https://www.w3.org/TR/appmanifest/#:~:text=A%20application%20manifest%20is%20a,which%20the%20manifest%20was%20fetched.
 

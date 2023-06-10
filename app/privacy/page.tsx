@@ -1,6 +1,10 @@
 // types
 import type { Metadata } from "next";
 
+// Data
+import { meta } from "@/data/constants";
+
+// SEO
 export const metadata: Metadata = {
   title: "Privacy",
   // description: 'NextJS + TailwindCSS minimalist starter kit',
