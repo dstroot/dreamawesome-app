@@ -1,6 +1,6 @@
 ## TODO
 
-- [ ] Manifest Images
-- [ ] favicon?
-- [ ] Terms and privacy in footer
-- [ ] Google tag manager
+- [x] Manifest Images
+- [x] favicon?
+- [x] Terms and privacy in footer
+- [x] Google tag manager
