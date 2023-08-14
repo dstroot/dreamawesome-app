@@ -6,9 +6,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.0.1",
+    "@vercel/analytics": "^1.0.2",
     "eventsource-parser": "^1.0.0",
-    "next": "13.4.12",
+    "next": "13.4.13",
     "openai": "^3.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -17,13 +17,13 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
-    "@types/node": "20.4.5",
-    "@types/react": "18.2.18",
+    "@types/node": "20.5.0",
+    "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
-    "autoprefixer": "^10.4.14",
+    "autoprefixer": "^10.4.15",
     "postcss": "^8.4.27",
-    "prettier": "^3.0.0",
-    "prettier-plugin-tailwindcss": "^0.4.1",
+    "prettier": "^3.0.1",
+    "prettier-plugin-tailwindcss": "^0.5.2",
     "tailwindcss": "^3.3.3",
     "typescript": "5.1.6"
   }
