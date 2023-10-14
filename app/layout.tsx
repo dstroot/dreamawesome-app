@@ -1,5 +1,6 @@
 // Styles
 import "@/styles/globals.css";
+import { Suspense } from "react";
 
 // types
 import type { Metadata } from "next";
@@ -73,8 +74,10 @@ export default function RootLayout({
         {/* <Navbar /> */}
         <main className="flex-grow">{children}</main>
         <Footer />
-        <GoogleTagMgr />
-        <Analytics />
+        <Suspense>
+          <GoogleTagMgr />
+          <Analytics />
+        </Suspense>
       </body>
     </html>
   );
