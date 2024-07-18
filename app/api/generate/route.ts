@@ -23,7 +23,7 @@ export async function POST(req: NextRequest): Promise<Response> {
 
   // https://platform.openai.com/docs/api-reference/chat
   const payload: OpenAIStreamPayload = {
-    model: "gpt-3.5-turbo",
+    model: "gpt-4o-mini",
     /* 
       
       Messages must be an array of message objects, where each object has a
