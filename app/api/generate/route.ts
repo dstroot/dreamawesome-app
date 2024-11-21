@@ -23,7 +23,7 @@ export async function POST(req: NextRequest): Promise<Response> {
 
   // https://platform.openai.com/docs/api-reference/chat
   const payload: OpenAIStreamPayload = {
-    model: "gpt-4o-mini",
+    model: "gpt-4o-mini", // gpt-4o-mini, o1-mini was released 11/20/2024 and may be better
     /* 
       
       Messages must be an array of message objects, where each object has a

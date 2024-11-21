@@ -3,7 +3,7 @@ import "@/styles/globals.css";
 import { Suspense } from "react";
 
 // types
-import type { Metadata } from "next";
+import type { Viewport, Metadata } from "next";
 
 // Components
 import { Footer } from "@/components/Footer";
@@ -22,6 +22,11 @@ const varela = Varela_Round({
   variable: "--font-varela",
 });
 
+export const viewport: Viewport = {
+  themeColor: meta.themeColor,
+  // https://nextjs.org/docs/app/api-reference/functions/generate-metadata#opengraph
+};
+
 export const metadata: Metadata = {
   // metadataBase is a convenience option to set a base URL prefix for metadata fields
   // that require a fully qualified URL. https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
@@ -33,8 +38,6 @@ export const metadata: Metadata = {
   },
   description: meta.description,
   // https://nextjs.org/docs/app/api-reference/functions/generate-metadata#basic-fields
-  themeColor: meta.themeColor,
-  // https://nextjs.org/docs/app/api-reference/functions/generate-metadata#opengraph
   openGraph: {
     title: meta.title,
     description: meta.description,

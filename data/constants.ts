@@ -10,7 +10,7 @@ interface Meta {
   backgroundColor?: string;
   og: {
     locale?: Locale;
-    type?: "website";
+    type: "website";
     ogImage: string | URL;
     width?: number;
     height?: number;

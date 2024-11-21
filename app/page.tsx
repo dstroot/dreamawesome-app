@@ -7,6 +7,7 @@ import {
   ParsedEvent,
   ReconnectInterval,
 } from "eventsource-parser";
+// import { createParser, type EventSourceMessage } from "eventsource-parser";
 
 export default function Page() {
   const [value, setValue] = useState(""); // what the user types
@@ -87,6 +88,26 @@ export default function Page() {
         const reader = data.getReader();
         const decoder = new TextDecoder();
         const parser = createParser(onParse);
+
+        // const parser = createParser({
+        //   onEvent: (event: EventSourceMessage) => {
+        //     const data = event.data;
+        //     try {
+        //       const text = JSON.parse(data).text ?? "";
+        //       setSentences((prev) => prev + text);
+        //     } catch (e) {
+        //       // TODO: error handling logic
+        //       console.error(e);
+        //     }
+        //   },
+        //   onRetry: (interval: number) => {
+        //     // …handle retry interval change…
+        //   },
+        //   onError: (error: Error) => {
+        //     // …handle parse error…
+        //     console.error(error);
+        //   },
+        // });
 
         // Read the stream
         let done = false;
