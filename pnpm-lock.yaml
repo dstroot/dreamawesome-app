@@ -12,8 +12,8 @@ importers:
         specifier: ^1.4.1
         version: 1.4.1(next@15.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       eventsource-parser:
-        specifier: ^1.1.2
-        version: 1.1.2
+        specifier: 2.0.1
+        version: 2.0.1
       next:
         specifier: 15.0.3
         version: 15.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -471,9 +471,9 @@ packages:
     resolution: {integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==}
     engines: {node: '>=6'}
 
-  eventsource-parser@1.1.2:
-    resolution: {integrity: sha512-v0eOBUbiaFojBu2s2NPBfYUoRR9GjcDNvCXVaqEf5vVfpIAh9f8RCo4vXTP8c63QRKCFwoLpMpTdPwwhEKVgzA==}
-    engines: {node: '>=14.18'}
+  eventsource-parser@2.0.1:
+    resolution: {integrity: sha512-gMaRLm5zejEH9mNXC54AnIteFI9YwL/q5JKMdBnoG+lEI1JWVGFVk0Taaj9Xb5SKgzIBDZoQX5IzMe44ILWODg==}
+    engines: {node: '>=18.0.0'}
 
   fast-glob@3.3.2:
     resolution: {integrity: sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==}
@@ -1338,7 +1338,7 @@ snapshots:
 
   event-target-shim@5.0.1: {}
 
-  eventsource-parser@1.1.2: {}
+  eventsource-parser@2.0.1: {}
 
   fast-glob@3.3.2:
     dependencies:
