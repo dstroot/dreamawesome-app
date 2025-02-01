@@ -2,12 +2,7 @@
 
 import { SyntheticEvent, ChangeEvent, useState, useCallback } from "react";
 import { Testimonials } from "../components/Testimonials";
-import {
-  createParser,
-  ParsedEvent,
-  ReconnectInterval,
-} from "eventsource-parser";
-// import { createParser, type EventSourceMessage } from "eventsource-parser";
+import { ChatCompletionStream } from "openai/lib/ChatCompletionStream";
 
 export default function Page() {
   const [value, setValue] = useState(""); // what the user types
@@ -50,81 +45,31 @@ export default function Page() {
       }
 
       setWaiting(true);
-      try {
-        const response = await fetch("/api/generate", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ text: value }),
+
+      fetch("/api/openai", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: value }),
+      }).then(async (res) => {
+        // @ts-ignore ReadableStream on different environments can be strange
+        const runner = ChatCompletionStream.fromReadableStream(res.body);
+
+        runner.on("content", (delta) => {
+          setSentences((prev) => prev + delta);
         });
 
-        if (!response.ok) {
-          throw new Error(
-            `Request failed with status: ${response.status}. ${response.statusText}`
-          );
-        }
+        runner.on("error", (error) => {
+          console.error(error);
+        });
 
-        // NOTE: This data is a ReadableStream
-        const data = response.body;
-        if (!data) {
-          return;
-        }
-
-        const onParse = (event: ParsedEvent | ReconnectInterval) => {
-          if (event.type === "event") {
-            const data = event.data;
-            try {
-              const text = JSON.parse(data).text ?? "";
-              setSentences((prev) => prev + text);
-            } catch (e) {
-              // TODO: error handling logic
-              console.error(e);
-            }
-          }
-        };
-
-        // https://web.dev/streams/#the-getreader-and-read-methods
-        const reader = data.getReader();
-        const decoder = new TextDecoder();
-        const parser = createParser(onParse);
-
-        // const parser = createParser({
-        //   onEvent: (event: EventSourceMessage) => {
-        //     const data = event.data;
-        //     try {
-        //       const text = JSON.parse(data).text ?? "";
-        //       setSentences((prev) => prev + text);
-        //     } catch (e) {
-        //       // TODO: error handling logic
-        //       console.error(e);
-        //     }
-        //   },
-        //   onRetry: (interval: number) => {
-        //     // …handle retry interval change…
-        //   },
-        //   onError: (error: Error) => {
-        //     // …handle parse error…
-        //     console.error(error);
-        //   },
-        // });
-
-        // Read the stream
-        let done = false;
-        while (!done) {
-          const { value, done: doneReading } = await reader.read();
-          done = doneReading;
-          const chunkValue = decoder.decode(value);
-          parser.feed(chunkValue);
-        }
-
-        // all done
-        setCompleted(true);
-        setWaiting(false);
-      } catch (e) {
-        // TODO: error handling logic
-        console.error(e);
-      }
+        runner.finalChatCompletion().then(() => {
+          // all done
+          setCompleted(true);
+          setWaiting(false);
+        });
+      });
     }
   };
 
