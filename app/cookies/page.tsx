@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function Index() {
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="mb-8 prose prose-lg break-words max-w-none dark:prose-invert prose-a:text-blue-700 prose-a:no-underline hover:prose-a:text-blue-500 dark:prose-a:text-blue-300 dark:hover:prose-a:text-blue-500">
+      <div className="mb-8 prose prose-lg break-words max-w-none dark:prose-invert prose-a:text-blue-700 prose-a:no-underline prose-a:hover:text-blue-500 dark:prose-a:text-blue-300 dark:prose-a:hover:text-blue-500">
         <div className="flex w-full px-4 pt-12 text-center">
           <div className="w-full">
             <h1 className="text-5xl font-bold text-berry-900 dark:text-gray-200">

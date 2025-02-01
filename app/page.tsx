@@ -102,7 +102,7 @@ export default function Page() {
               <span className="hidden md:inline"> (in detail)</span>:
             </label>
             <textarea
-              className="w-full p-6 text-lg transition ease-in-out rounded-lg appearance-none text-violet-600 form-control bg-rose-50 bg-clip-padding focus:outline-none focus:ring-2 focus:ring-violet-600 focus:border-transparent"
+              className="w-full p-6 text-lg transition ease-in-out rounded-lg appearance-none text-violet-600 form-control bg-rose-50 bg-clip-padding focus:outline-hidden focus:ring-2 focus:ring-violet-600 focus:border-transparent"
               aria-describedby="dreamhelp"
               placeholder="I dreamt I was ..."
               rows={5}

@@ -23,7 +23,7 @@ const Testimonial: FC<Item> = ({ image, name, twitter, url, testimonial }) => {
         />
         <div className="ml-3 ">
           <div className="font-bold text-violet-700">{name}</div>
-          {/* <div className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500"> */}
+          {/* <div className="font-bold text-transparent bg-clip-text bg-linear-to-r from-violet-500 to-fuchsia-500"> */}
           <div className=" text-violet-600">
             {/* <a
               href={url}
