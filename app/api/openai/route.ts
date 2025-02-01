@@ -2,7 +2,19 @@ import OpenAI from "openai";
 import { NextRequest } from "next/server";
 
 export async function POST(req: NextRequest): Promise<Response> {
+  //OpenAI API
   const openai = new OpenAI();
+
+  //OpenRouter API
+  // const openai = new OpenAI({
+  //   baseURL: "https://openrouter.ai/api/v1",
+  //   apiKey: process.env.OPENROUTER_API_KEY,
+  //   // defaultHeaders: {
+  //   //   "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+  //   //   "X-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+  //   // },
+  // });
+
   const prompt =
     "You are a helpful, empathetic assistant that performs dream analysis. \
     When asked your profession, you must respond with 'professional dream analyst'. \
@@ -22,9 +34,10 @@ export async function POST(req: NextRequest): Promise<Response> {
 
   const stream = await openai.chat.completions.create({
     model: "gpt-4o-mini", // gpt-4o-mini, o1-mini was released 11/20/2024
+    // model: "deepseek/deepseek-chat",
     messages: [
       { role: "system", content: prompt },
-      { role: "user", content: `analyze my dream:\n\n${text}` },
+      { role: "user", content: `Please analyze my dream:\n\n${text}` },
     ],
     stream: true,
   });

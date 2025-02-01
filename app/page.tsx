@@ -98,8 +98,28 @@ export default function Page() {
               htmlFor="exampleInputEmail1"
               className="inline-block mt-4 mb-2 sm:mt-6 md:mt-8 md:text-lg text-rose-50 form-label"
             >
-              Please describe your dream
-              <span className="hidden md:inline"> (in detail)</span>:
+              <h1 className="text-2xl mb-2">Please describe your dream:</h1>
+              <ul className="hidden md:block mb-2 text-sm">
+                <li>
+                  1. What happened in the dream? (Describe the sequence of
+                  events.)
+                </li>
+                <li>
+                  2. Who was present in the dream? (People, animals, or symbolic
+                  figures.)
+                </li>
+                <li>
+                  3. What was the setting or environment like? (Familiar,
+                  unfamiliar, comforting, or unsettling.)
+                </li>
+                <li>
+                  4. How did you feel during and after the dream? (Emotions such
+                  as fear, joy, confusion, etc.)
+                </li>
+                <li>
+                  5. Were there any recurring symbols, objects, or themes?
+                </li>
+              </ul>
             </label>
             <textarea
               className="w-full p-6 text-lg transition ease-in-out rounded-lg appearance-none text-violet-600 form-control bg-rose-50 bg-clip-padding focus:outline-hidden focus:ring-2 focus:ring-violet-600 focus:border-transparent"
