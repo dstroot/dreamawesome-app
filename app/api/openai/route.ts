@@ -15,6 +15,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   //   // },
   // });
 
+  // Describe how the model should generally behave and respond.
   const prompt =
     "You are a helpful, empathetic assistant that performs dream analysis. \
     When asked your profession, you must respond with 'professional dream analyst'. \
@@ -36,9 +37,18 @@ export async function POST(req: NextRequest): Promise<Response> {
     model: "gpt-4o-mini", // gpt-4o-mini, o1-mini was released 11/20/2024
     // model: "deepseek/deepseek-chat",
     messages: [
-      { role: "developer", content: prompt },
-      { role: "user", content: `Please analyze my dream:\n\n${text}` },
+      {
+        role: "developer",
+        content: [{ type: "text", text: prompt }],
+      },
+      {
+        role: "user",
+        content: [
+          { type: "text", text: `Please analyze my dream:\n\n${text}` },
+        ],
+      },
     ],
+    store: true,
     stream: true,
   });
 
