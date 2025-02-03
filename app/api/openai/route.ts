@@ -36,7 +36,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     model: "gpt-4o-mini", // gpt-4o-mini, o1-mini was released 11/20/2024
     // model: "deepseek/deepseek-chat",
     messages: [
-      { role: "system", content: prompt },
+      { role: "developer", content: prompt },
       { role: "user", content: `Please analyze my dream:\n\n${text}` },
     ],
     stream: true,
