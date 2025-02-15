@@ -35,7 +35,7 @@ export async function POST(req: NextRequest): Promise<Response> {
 
   const stream = await openai.chat.completions.create({
     model: "gpt-4o-mini", // gpt-4o-mini, o1-mini was released 11/20/2024
-    // model: "deepseek/deepseek-chat",
+    // model: "deepseek/deepseek-chat", chatgpt-40-latest-20250129
     messages: [
       {
         role: "developer",
@@ -48,7 +48,11 @@ export async function POST(req: NextRequest): Promise<Response> {
         ],
       },
     ],
-    store: true,
+    store: false,
+    // reasoning_effort: "medium", // low, medium, high
+    // Constrains effort on reasoning for reasoning models. Reducing
+    // reasoning effort can result in faster responses and fewer tokens
+    // used on reasoning in a response.
     stream: true,
   });
 
